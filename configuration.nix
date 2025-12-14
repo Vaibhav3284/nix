@@ -1,12 +1,22 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      (import "${home-manager}/nixos")
     ];
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.bored = import /home/bored/nix/home.nix;
+
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
+
+  hardware.bluetooth.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -39,8 +49,9 @@
 
   services.xserver.enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.ly.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -59,7 +70,7 @@
   };
 
   users.users.bored = {
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     isNormalUser = true;
     description = "bored";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -68,7 +79,7 @@
   };
 
   programs.firefox.enable = true;
-  programs.fish.enable = true;
+  services.blueman.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -88,7 +99,13 @@
   wget
   git
   steam
+  
   ];
+
+  fonts.packages = with pkgs; [
+		jetbrains-mono
+	];
+
 
   system.stateVersion = "25.11"; # Did you read the comment?
 
