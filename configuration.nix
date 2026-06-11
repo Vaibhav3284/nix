@@ -1,67 +1,61 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
-    [ 
-      /etc/nixos/hardware-configuration.nix
+    [
+      ../../../etc/nixos/hardware-configuration.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  networking.hostName = "nixos"; 
-
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Kolkata";
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  services.displayManager.ly.enable = true;
   
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "euro";
-  };
-
-  services.printing.enable = true;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  services.xserver = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
+    windowManager.qtile.enable = true;
+    displayManager.sessionCommands = ''
+      xwallpaper --zoom ~/nixos-dotfiles/walls/wall1.png
+    '';
+    extraConfig = ''
+      	Section "Monitor"
+      	  Identifier "eDP-1"
+      	  Option "PreferredMode" "1366x768"
+      	EndSection
+    '';
   };
 
-  users.users."bored" = {
+  services.picom.enable = true;
+
+  users.users.tony = {
     isNormalUser = true;
-    description = "bored";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      tree
     ];
   };
 
   programs.firefox.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-  emacs
-  wget
-  git
-  tealdeer
-  bat
-  tree
+    vim
+    wget
+    git
+    alacritty
   ];
-  
-  system.stateVersion = "26.05"; # Did you read the comment?
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  system.stateVersion = "26.05";
 }
+
