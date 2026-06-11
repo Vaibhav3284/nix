@@ -1,8 +1,0 @@
-set $rbg 002b36
-set $rfg 839496
-set $rmg 002b36
-set $rac b58900
-set $rur 073642
-set $rbc $rac
-set $wall ~/wallpapers/solarized/train_tracks_in_a_forest.jpg fill
-

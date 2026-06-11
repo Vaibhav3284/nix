@@ -1,8 +1,0 @@
-set $rbg fdf6e3
-set $rfg 657b83
-set $rmg fdf6e3
-set $rac b58900
-set $rur 073642
-set $rbc $rac
-set $wall ~/wallpapers/solarized/a_bus_on_a_foggy_day.jpg fill
-

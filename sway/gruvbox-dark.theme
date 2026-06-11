@@ -1,8 +1,0 @@
-set $rbg 282828
-set $rfg ebdbb2
-set $rmg 282828
-set $rac b16286
-set $rur cc241d
-set $rbc $rac
-set $wall ~/wallpapers/gruvbox/snake.png fill
-
