@@ -1,0 +1,85 @@
+
+[global]
+	background = "#181816"
+	foreground = "#c5c9c5"
+	frame_color = "#c5c9c5"
+    width = (100, 450)
+    height = (0, 650)
+    origin = top-center
+
+    offset = (0, 10)
+    notification_limit = 20
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    icon_corner_radius = 0
+    icon_corners = all
+    transparency = 0
+    gap_size = 5
+    frame_width = 1
+    padding = 8
+    horizontal_padding = 8
+    text_icon_padding = 0
+    gap_size = 0
+    sort = yes
+    font = Input Sans 16
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 32
+    icon_path = /usr/local/share/icons/gnome/16x16/status/:/usr/local/share/icons/gnome/16x16/devices/
+    sticky_history = yes
+    history_length = 20
+    dmenu = /usr/local/bin/dmenu -p dunst:
+    browser = /usr/local/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 0
+    corners = all
+    ignore_dbusclose = false
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+[urgency_low]
+    timeout = 10
+    default_icon = dialog-information
+
+[urgency_normal]
+    timeout = 10
+    override_pause_level = 30
+    default_icon = dialog-information
+
+[urgency_critical]
+    foreground = "#c4746e"
+    frame_color = "#c4746e"
+    timeout = 0
+    override_pause_level = 60
+    default_icon = dialog-warning
+
+
+
+
+
+
+
+
+
+
