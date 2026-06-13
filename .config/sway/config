@@ -13,7 +13,7 @@ exec wl-paste --watch cliphist store
 exec ~/Scripts/battery-monitor
 exec emacs --daemon
 # exec ~/Scripts/set-wallpaper random
-exec /usr/lib/polkit-kde-authentication-agent-1 
+exec /usr/lib/polkit-kde-authentication-agent-1
 
 # ╭───────────────────────────────────────────────────────────────────────╮
 # │ VARIABLES                                                             │
@@ -92,6 +92,7 @@ mouse_warping output
 
 seat * hide_cursor 8000
 seat * hide_cursor when-typing disable
+
 
 # ╭───────────────────────────────────────────────────────────────────────╮
 # │ WINDOW RULES                                                          │
