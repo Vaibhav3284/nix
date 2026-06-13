@@ -1,5 +1,7 @@
 # --- Appearance & Blur ---
 # image=~/Wallpapers/monochrome/mac__.jpg
+
+# Flags in swaylock-effects are just listed without "=true"
 screenshots
 clock
 indicator
@@ -30,5 +32,5 @@ text-wrong-color=e06c75
 ignore-empty-password
 show-failed-attempts
 font="Inter"
-datestr=%a, %B %e
-timestr=%I:%M %p
+datestr="%a, %B %e"
+timestr="%I:%M %p"
